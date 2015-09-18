@@ -114,7 +114,7 @@ curljson.php … [--key KEY] [--feature METHOD [--macro KEY]]
 
 RabbitMQ Management Plugin предоставляет HTTP API для мониторинга и управления сервером. В примерах предполагается, что API доступено по ссылке `http://localhost:15672/api`.
 
-Получение общего количества опубликованных сообщений для очереди myqueue виртуального хоста `/`.
+Получение общего количества опубликованных сообщений для очереди `myqueue` виртуального хоста `/`.
 
 ```
 # curljson.php --url localhost:15672/api/queues///myqueue?columns=message_stats –username guest –password guest --key message_stats.publish
