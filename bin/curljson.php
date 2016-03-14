@@ -456,6 +456,11 @@ else
 	{
 		exit_error("Result value is array\n");
 	}
+	if (is_bool($json))
+	{
+		print_debug("Convert the boolean to integer value\n");
+		$json = (int) $json
+	}
 	echo $json . "\n";
 }
 exit(0);
