@@ -192,3 +192,5 @@ RabbitMQ Management Plugin предоставляет HTTP API для монит
 ```
 --key \"example.com\".responses.2xx
 ```
+
+При выводе булевые значения конвертируются в их числовое представление: false - 0, true - 1
