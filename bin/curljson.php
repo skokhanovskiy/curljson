@@ -33,6 +33,7 @@ Supported feature methods:
  zabbix-lld            - build json for zabbix low-level discovery
  zabbix-lld-urlencode  - build json for zabbix low-level discovery (add url-encoded macros)
  sum                   - calculate sum of elements
+ avg                   - average of elements
 
 Examples:
 
@@ -479,6 +480,33 @@ else if (isset($opts["feature"]))
                 }
             }
             echo $sum . "\n";
+            break;
+        case "avg":
+            print_debug("Average of keys mode\n");
+            $sum = 0;
+            $count = 0;
+            $avg = 0;
+            foreach (array_values($json) as $j)
+            {
+                if (isset($opts["macro"]))
+                {
+                    foreach (array_values($opts["macro"]) as $m)
+                    {
+                        $sum = checksum($sum, array_value($j, $m));
+                        $count++;
+                    }
+                }
+                else
+                {
+                    $sum = checksum($sum, $j);
+                    $count++;
+                }
+            }
+            if ($count != 0)
+            {
+                $avg = $sum / $count;
+            }
+            echo $avg . "\n";
             break;
         case "zabbix-sender":
             print_debug("Zabbix sender mode\n");
